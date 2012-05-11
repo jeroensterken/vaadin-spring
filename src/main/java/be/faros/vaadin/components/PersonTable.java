@@ -52,7 +52,5 @@ public class PersonTable extends Table implements ItemClickListener {
 
 		vEvent = new VaadinEvent(Type.SELECTPERSON, person);
 		listener.publishVaadinEvent(vEvent);
-
 	}
-
 }
