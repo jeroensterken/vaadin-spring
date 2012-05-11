@@ -27,7 +27,7 @@
 
     <servlet>
         <servlet-name>VaadinSpringAppServlet</servlet-name>
-        <servlet-class>be.faros.vaadin.VaadinSpringAppServlet</servlet-class>
+        <servlet-class>be.faros.vaadin.ui.VaadinSpringAppServlet</servlet-class>
         <init-param>
             <param-name>applicationBean</param-name>
             <param-value>myVaadinApplication</param-value>
