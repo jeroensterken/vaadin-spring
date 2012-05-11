@@ -18,16 +18,16 @@ public class PersonTable extends Table implements ItemClickListener {
 
 	VaadinEventListener listener;
 
-	public void setListener(VaadinEventListener listener) {
-		this.listener = listener;
-	}
-
 	public PersonTable() {
 		super();
 		setCaption("My PersonsTable");
 		setContainerDataSource(createContainer(new ArrayList<Person>()));
 		setSelectable(true);
 		addListener((ItemClickListener) this);
+	}
+
+	public void setListener(VaadinEventListener listener) {
+		this.listener = listener;
 	}
 
 	private Container createContainer(Collection<Person> persons) {

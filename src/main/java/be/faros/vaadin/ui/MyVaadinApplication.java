@@ -32,13 +32,13 @@ public class MyVaadinApplication extends Application implements VaadinEventListe
 	private PersonTable personTable;
 	private PersonForm personForm;
 	private PersonWindow personWindow;
-	
+
 	private MenuBar menubar;
-	
+
     @Override
     public void init() {
 		createInitData();
-		VerticalLayout layout =new VerticalLayout();
+		VerticalLayout layout = new VerticalLayout();
 		layout.setSpacing(true);
 		layout.setMargin(true);
 
@@ -57,7 +57,7 @@ public class MyVaadinApplication extends Application implements VaadinEventListe
 		persons.add(person1);
 		persons.add(person2);
 	}
-	
+
 	private Component createMenuBar() {
 		menubar = new MenuBar();
 		final MenuBar.MenuItem file = menubar.addItem("File", null);
@@ -68,34 +68,33 @@ public class MyVaadinApplication extends Application implements VaadinEventListe
 		});
 		return menubar;
 	}
-	
+
 	private Component createForm() {
 		personForm =new PersonForm();
-		personForm.setListener((VaadinEventListener) this);
+		personForm.setListener(this);
 		return personForm;
 	}
 
 	private Component createTable() {
 		personTable = new PersonTable();
 		personTable.refresh(persons);
-		personTable.setListener((VaadinEventListener) this);
+		personTable.setListener(this);
 		return personTable;
 	}
 
 	private void openPersonAddWindow() {
 		personWindow = new PersonWindow();
-		personWindow.setListener((VaadinEventListener) this);
+		personWindow.setListener(this);
 		getMainWindow().addWindow(personWindow);
-		
 	}
 
-	public void publishVaadinEvent(VaadinEvent businessEvent) {
-		if(businessEvent.getType().equals(Type.ADDPERSON)) {
-			addPerson((Person)businessEvent.getData());
-		}else if(businessEvent.getType().equals(Type.SELECTPERSON)) {
-			selectPerson((Person)businessEvent.getData());
-		}else if(businessEvent.getType().equals(Type.DOUBLECLICKPERSON)) {
-			doubleClickPerson((Person)businessEvent.getData());
+	public void publishVaadinEvent(VaadinEvent vaadinEvent) {
+		if (vaadinEvent.getType().equals(Type.ADDPERSON)) {
+			addPerson((Person)vaadinEvent.getData());
+		} else if(vaadinEvent.getType().equals(Type.SELECTPERSON)) {
+			selectPerson((Person)vaadinEvent.getData());
+		} else if(vaadinEvent.getType().equals(Type.DOUBLECLICKPERSON)) {
+			doubleClickPerson((Person)vaadinEvent.getData());
 		}
 	}
 
